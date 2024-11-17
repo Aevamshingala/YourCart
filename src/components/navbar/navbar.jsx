@@ -13,10 +13,6 @@ import { Sidebar } from "./sidebar";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <header className="sticky top-0 z-50 bg-gray-800 shadow-lg rounded-2xl">
       <nav className="flex items-center justify-between p-4">
@@ -85,7 +81,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Icon */}
         <button
-          onClick={toggleMenu}
+          onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden text-white text-2xl focus:outline-none"
         >
           {isOpen ? <FiX /> : <FiMenu />}

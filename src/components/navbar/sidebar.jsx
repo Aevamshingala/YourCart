@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FiHome, FiInfo, FiPhone, FiGithub } from "react-icons/fi";
 import Searchbar from "./searchbar";
 
 export function Sidebar({ setIsOpen }) {
+  // When sidebar is open, lock the page's scroll
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = "0";
+    document.body.style.left = "0";
+    document.body.style.width = "100%";
+    document.body.style.height = "100vh"; // Lock full height of body
+
+    // Unlock scrolling when sidebar is closed
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.position = "relative"; // Restore normal position
+      document.body.style.height = "auto"; // Restore normal height
+    };
+  }, [setIsOpen]);
   return (
     <div className="lg:hidden fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 bg-opacity-95 z-50 flex flex-col items-center pt-16 text-white shadow-xl transition-transform duration-300">
       {/* Logo and Search */}
@@ -61,11 +77,6 @@ export function Sidebar({ setIsOpen }) {
           <FiGithub className="mr-3 text-xl" />
           GitHub
         </NavLink>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-auto pb-8 text-sm text-gray-400">
-        © 2024 YourCart. All rights reserved.
       </div>
     </div>
   );

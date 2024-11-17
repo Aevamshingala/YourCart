@@ -11,14 +11,14 @@ function CategoryCard() {
       <Category />
       {cardData.map(({ title, imageUrl, description, link }) => (
         <div
-          className="bg-white bg-opacity-95  rounded-2xl h-[300px] lg:h-full md:h-full flex justify-center items-center"
+          className="bg-white bg-opacity-95 rounded-2xl h-[300px] lg:h-full md:h-full flex justify-center items-center"
           key={nanoid()}
         >
           <div className=" hover:scale-110 transition-all">
             <img
               src={imageUrl}
               alt={title}
-              className=" w-[80%] h-[80%] p-4 rounded-full sm:w-full sm:h-fit"
+              className=" lg:w-[80%] lg:h-[80%] p-6 rounded-full sm:w-full sm:h-full"
             />
           </div>
 
@@ -27,7 +27,7 @@ function CategoryCard() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.6 }}
           >
-            <div className="bg-white rounded-2xl h-[50%] p-5 sm:h-fit md:h-fit m-5">
+            <div className="bg-white rounded-2xl h-[50%] p-5 sm:h-fit md:h-fit m-5 hover:ring-8 ring-blue-200">
               <h1 className=" text-gray-700 text-2xl ">{title}</h1>
               <h2 className="text-gray-400 text-xl ">{description}</h2>
               <Button />
