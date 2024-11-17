@@ -12,7 +12,7 @@ const scrollCard = () => {
         <div
           key={nanoid()}
           className="min-w-[300px] sm:min-w-[400px] md:min-w-[600px] lg:min-w-[800px]
- bg-white bg-opacity-90 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:-translate-y-2 hover:shadow-2xl focus-within:ring-4 focus-within:ring-blue-400"
+ bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:-translate-y-2 hover:shadow-2xl focus-within:ring-4 focus-within:ring-blue-400"
         >
           {/* Image */}
           <img
@@ -23,12 +23,12 @@ const scrollCard = () => {
 
           <div className="p-6">
             {/* Title */}
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-2">
               {title}
             </h2>
 
             {/* Description */}
-            <p className="text-gray-700 text-sm mb-4">{description}</p>
+            <p className="text-gray-400  text-xl mb-4">{description}</p>
 
             {/* Button */}
             <div className="flex justify-center">

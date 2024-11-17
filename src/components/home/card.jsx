@@ -12,38 +12,39 @@ function Card() {
         .map(({ title, imageUrl, description, link }, index) => {
           // Set specific spans for each card by index to control the layout
           const spanClass = [
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-2 lg:row-span-1",
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-3 lg:row-span-1",
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-2 lg:row-span-1",
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-1 lg:row-span-1",
-            "lg:col-span-3 lg:row-span-1",
+            "lg:col-span-1 ",
+            "lg:col-span-2 ",
+            "lg:col-span-1 ",
+            "lg:col-span-3 ",
+            "lg:col-span-1 ",
+            "lg:col-span-1 ",
+            "lg:col-span-2 ",
+            "lg:col-span-1 ",
+            "lg:col-span-1 ",
+            "lg:col-span-3 ",
           ][index % 10];
           // it take value from the index and then assing to spanclass
           return (
             <div
               key={nanoid()}
-              className={`bg-white bg-opacity-90 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:-translate-y-2 hover:shadow-2xl focus-within:ring-4 focus-within:ring-blue-400 ${spanClass}`}
+              className={`bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition transform hover:-translate-y-2 hover:shadow-2xl lg:row-span-1 ${spanClass}`}
             >
               {/* Image */}
-              <img
-                className="w-full h-48 md:h-64 lg:h-72 object-cover"
-                src={imageUrl}
-                alt={title}
-              />
-
-              <div className="p-6">
+              <div>
+                <img
+                  className="w-full h-48 md:h-64 lg:h-72 object-cover "
+                  src={imageUrl}
+                  alt={title}
+                />
+              </div>
+              <div className="p-6 bg-white">
                 {/* Title */}
-                <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+                <h2 className="text-2xl font-semibold text-gray-700 mb-2 ">
                   {title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-gray-700 text-sm mb-4">{description}</p>
+                <p className="text-gray-400 mb-4 text-xl">{description}</p>
 
                 {/* Button */}
                 <div className="flex justify-center">

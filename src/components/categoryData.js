@@ -3,7 +3,8 @@ const Category = [
     item: "Electronics",
     image:
       "https://media.istockphoto.com/id/1677375088/photo/data-lake-big-data-warehouse-data-lake-platform-analytics-technology.jpg?s=2048x2048&w=is&k=20&c=3N8zzXUCvgJzWLdEgfl0xsmqh6dGx3T5aOZ0rYwJjbE=",
-    link: "/electronics",
+    // link: "/electronics"
+    link: "/category",
   },
   {
     item: "Home and Kitchen",

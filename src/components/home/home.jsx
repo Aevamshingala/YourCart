@@ -3,6 +3,7 @@ import Card from "./card";
 import ScrollCard from "./scrollCard";
 import Category from "./category";
 
+
 function Home() {
   return (
     <>
