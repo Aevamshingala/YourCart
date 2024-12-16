@@ -74,9 +74,11 @@ export default function Navbar() {
         {/* Search bar and Icons */}
         <div className="hidden lg:flex items-center space-x-4">
           <Searchbar />
-          <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
-            🌊
-          </div>
+          <Link to={"/profile"}>
+            <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
+              🌊
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Icon */}

@@ -44,3 +44,11 @@
   scrollbar-width: none;
 }
 
+.bg-profile{
+
+  background: linear-gradient(to bottom, #0053a5, #2eb7ba, #1fa269, #25a465);
+  -webkit-background-clip: text; /* Clip gradient to text */
+  -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
+  display: inline-block; /* Ensures proper gradient rendering */
+
+}
