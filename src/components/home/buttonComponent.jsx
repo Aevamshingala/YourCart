@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export function Button() {
+export function Button({ description = "Click hear" }) {
   return (
     <>
       <motion.div
@@ -15,7 +15,7 @@ export function Button() {
           transform hover:scale-105 focus:ring-2 focus:ring-blue-500
           focus:ring-opacity-50 mt-5"
         >
-          get Link
+          {description}
         </button>
       </motion.div>
     </>

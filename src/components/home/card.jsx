@@ -49,7 +49,7 @@ function Card() {
                 {/* Button */}
                 <div className="flex justify-center">
                   <Link to={link}>
-                    <Button />
+                    <Button description={"get Link"} />
                   </Link>
                 </div>
               </div>

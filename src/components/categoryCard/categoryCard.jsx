@@ -30,7 +30,7 @@ function CategoryCard() {
             <div className="bg-white rounded-2xl h-[50%] p-5 sm:h-fit md:h-fit m-5 hover:ring-8 ring-blue-200">
               <h1 className=" text-gray-700 text-2xl ">{title}</h1>
               <h2 className="text-gray-400 text-xl ">{description}</h2>
-              <Button />
+              <Button description="get Link" />
             </div>
           </motion.div>
         </div>

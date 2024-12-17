@@ -50,14 +50,14 @@ export default function Navbar() {
             About
           </NavLink>
           <NavLink
-            to="/contact"
+            to="/allprofile"
             className={({ isActive }) =>
               `${
                 isActive ? " text-blue-500" : "text-white"
               }block py-2 pr-4 pl-3 duration-200 border-b border-blue-100 hover:bg-blue-50 lg:hover:bg-transparent lg:border-0 hover:text-blue-500 lg:p-0 text-lg`
             }
           >
-            Contact
+            Profiles
           </NavLink>
           <NavLink
             to="/github"
