@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import category from "../categoryData";
 import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 function Category() {
   return (
@@ -9,6 +10,7 @@ function Category() {
       <div className="flex overflow-x-scroll space-x-6 scroll-smooth scrollbar-thin mt-5 shadow-lg pt-8 scrollbar-hide">
         {category.map(({ item, image, link }) => (
           <motion.div
+            key={nanoid()}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

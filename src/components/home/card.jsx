@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import cardData from "../temoData.js";
 import { Button } from "./buttonComponent.jsx";
+import { BiSolidLike } from "react-icons/bi";
 
 function Card() {
+  const [islike, setIsLike] = useState(false);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-6">
       {cardData
@@ -47,10 +49,17 @@ function Card() {
                 <p className="text-gray-400 mb-4 text-xl">{description}</p>
 
                 {/* Button */}
-                <div className="flex justify-center">
+                <div className="flex items-center justify-center space-x-4">
                   <Link to={link}>
                     <Button description={"get Link"} />
                   </Link>
+
+                  <BiSolidLike
+                    className={`text-3xl  ${
+                      islike ? "text-blue-500" : "text-gray-500"
+                    } cursor-pointer hover:text-blue-500 mt-4`}
+                    // take the id of post and check the like
+                  />
                 </div>
               </div>
             </div>

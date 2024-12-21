@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import cardData from "../temoData.js";
 import { Button } from "./buttonComponent.jsx";
+import { BiSolidLike } from "react-icons/bi";
 
 const scrollCard = () => {
+  const [islike, setIsLike] = useState(false);
+
   return (
     // Scrollable horizontal container with horizontal padding and overflow-x-scroll
     <div className="flex overflow-x-scroll space-x-4 p-6 scroll-smooth scrollbar-thin">
@@ -31,10 +34,17 @@ const scrollCard = () => {
             <p className="text-gray-400  text-xl mb-4">{description}</p>
 
             {/* Button */}
-            <div className="flex justify-center">
+            <div className="flex items-center justify-center space-x-4">
               <Link to={link}>
                 <Button description={"get Link"} />
               </Link>
+
+              <BiSolidLike
+                className={`text-3xl  ${
+                  islike ? "text-blue-500" : "text-gray-500"
+                } cursor-pointer hover:text-blue-500 mt-4`}
+                // take the id of post and check the like
+              />
             </div>
           </div>
         </div>
