@@ -8,12 +8,14 @@ import { Route } from "react-router";
 import Home from "./components/home/home.jsx";
 import CategoryCard from "./components/categoryCard/categoryCard.jsx";
 import Profile from "./components/profile/profile.jsx";
+import Show_follow from "./components/profile/show_follow.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="" element={<Home />} />
       <Route path="/category" element={<CategoryCard />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/showfollower" element={<Show_follow />} />
     </Route>
   )
 );

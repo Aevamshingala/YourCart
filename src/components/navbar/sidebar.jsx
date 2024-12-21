@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FiHome, FiInfo, FiPhone, FiGithub } from "react-icons/fi";
 import Searchbar from "./searchbar";
+import { Link } from "react-router-dom";
 
 export function Sidebar({ setIsOpen }) {
   // When sidebar is open, lock the page's scroll
@@ -25,9 +26,11 @@ export function Sidebar({ setIsOpen }) {
       {/* Logo and Search */}
       <div className="flex items-center justify-between w-full px-6 py-4 bg-gray-800 shadow-md">
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full text-2xl text-white">
-            🌊
-          </div>
+          <Link to={"/profile"}>
+            <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
+              <button onClick={() => setIsOpen(false)}>🌊</button>
+            </div>
+          </Link>
           <h1 className="text-xl font-semibold">userName</h1>
         </div>
         <button

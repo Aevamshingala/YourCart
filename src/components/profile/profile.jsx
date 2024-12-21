@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { Button } from "../home/buttonComponent";
-
+import { Link } from "react-router-dom";
 const Profile = () => {
   return (
     <motion.div
@@ -42,15 +42,18 @@ const Profile = () => {
 
             {/* Button Container */}
             <div className="flex space-x-4 mb-4 items-center justify-center">
-              <Button description={"Follow"} />
+              <Link to={"/showfollower"}>
+                <Button description={"Follow"} />
+              </Link>
               <Button description={"Follower"} />
+              <Button description={"Following"} />
             </div>
 
             <a
               href="#"
               className="font-semibold text-black uppercase hover:underline"
             >
-              Read The Full Story
+              see all post
             </a>
           </div>
         </div>
