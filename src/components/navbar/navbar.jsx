@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="hidden lg:flex space-x-6 text-white">
           <NavLink
-            to="/"
+            to="/home"
             className={({ isActive }) =>
               `${
                 isActive ? " text-blue-500" : "text-white"
