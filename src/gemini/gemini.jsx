@@ -4,9 +4,11 @@ import axios from "axios";
 function Gemini() {
   const [question, setQuestion] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function generateGemini() {
     try {
+      setLoading(true);
       const response = await axios({
         url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${
           import.meta.env.VITE_GEMINI_API
@@ -20,6 +22,7 @@ function Gemini() {
           ],
         },
       });
+      setLoading(false);
       setQuestion("");
       setMessage(
         response.data.candidates[0]?.content?.parts[0]?.text || "No response"
@@ -59,22 +62,29 @@ function Gemini() {
           />
           <button
             onClick={generateGemini}
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
+            className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
           >
             Generate Response
           </button>
           {message && (
             <div
-              className="p-4 bg-slate-200 rounded-lg"
+              className="p-4 bg-slate-200 rounded-lg cursor-pointer"
               onClick={() => setMessage("")}
             >
               <button>Clear</button>
             </div>
           )}
+
+          {loading && (
+            <>
+              <div className="loading flex justify-center items-center">
+                <div className="h-12 w-12 border-4 border-blue-500 border-dashed rounded-sm animate-spin"></div>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
-      {/* Response Container */}
       {message && (
         <>
           <h2 className="text-xl font-semibold mb-2 mt-4">Response:</h2>
