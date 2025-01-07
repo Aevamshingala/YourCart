@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+;
 function Gemini() {
   const [question, setQuestion] = useState("");
   const [message, setMessage] = useState("");
@@ -8,7 +8,9 @@ function Gemini() {
   async function generateGemini() {
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBFrwZKYb7_sLc2EurcAGJ8EoaKaIzDvkw",
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${
+          import.meta.env.VITE_GEMINI_API
+        }`,
         method: "post",
         data: {
           contents: [
@@ -35,7 +37,11 @@ function Gemini() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br bg-transparent text-white p-6">
+    <div
+      className={`min-h-screen flex flex-col bg-gradient-to-br bg-transparent text-white p-6 border border-slate-50 rounded-lg ${
+        !message ? "justify-center items-center" : ""
+      }`}
+    >
       {/* Top Input Box */}
       <div className="bg-white text-gray-800 rounded-xl shadow-lg p-6 w-full max-w-lg mx-auto">
         <h1 className="text-3xl font-bold mb-4 text-center">
@@ -57,6 +63,14 @@ function Gemini() {
           >
             Generate Response
           </button>
+          {message && (
+            <div
+              className="p-4 bg-slate-200 rounded-lg"
+              onClick={() => setMessage("")}
+            >
+              <button>Clear</button>
+            </div>
+          )}
         </div>
       </div>
 
