@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 .back {
-  background: linear-gradient(to bottom, #071019, #04121a, #001d20, #0c3132);
+  /* background: linear-gradient(to bottom, #071019, #04121a, #001d20, #0c3132); */
   /* #004b43,
     #056850,
     #078c73,
     #10b298,
     #01e2c3 */
+    background-image: url('D:\Marketing\frontend_marketing\src\components\assets\background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;

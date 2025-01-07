@@ -50,7 +50,7 @@ export function Sidebar({ setIsOpen }) {
       <div className="flex flex-col w-10/12 mt-6 space-y-4">
         <NavLink
           onClick={() => setIsOpen(false)}
-          to="/"
+          to="/home"
           className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
         >
           <FiHome className="mr-3 text-xl" />
