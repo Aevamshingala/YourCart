@@ -12,6 +12,7 @@ import Show_follow from "./components/profile/show_follow.jsx";
 import LandingPage from "./extraFeture/landingPage.jsx";
 import { Outlet } from "react-router";
 import Gemini from "./gemini/gemini.jsx";
+import Client from "./socket_io_client/client.jsx";
 const LayoutWithoutNavbarAndFooter = () => (
   <div>
     <div className="content">
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
         <Route path="profile" element={<Profile />} />
         <Route path="showfollower" element={<Show_follow />} />
         <Route path="gemini" element={<Gemini />} />
+        <Route path="chat" element={<Client />} />
       </Route>
 
       <Route element={<LayoutWithoutNavbarAndFooter />}>

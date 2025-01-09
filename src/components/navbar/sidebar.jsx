@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { FiHome, FiInfo, FiPhone, FiGithub } from "react-icons/fi";
 import Searchbar from "./searchbar";
 import { Link } from "react-router-dom";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
+import { SiGooglegemini } from "react-icons/si";
 
 export function Sidebar({ setIsOpen }) {
   // When sidebar is open, lock the page's scroll
@@ -58,11 +60,11 @@ export function Sidebar({ setIsOpen }) {
         </NavLink>
         <NavLink
           onClick={() => setIsOpen(false)}
-          to="/about"
+          to="/chat"
           className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
         >
-          <FiInfo className="mr-3 text-xl" />
-          About
+          <IoChatboxEllipsesOutline className="mr-3 text-xl" />
+          Discord
         </NavLink>
         <NavLink
           onClick={() => setIsOpen(false)}
@@ -74,11 +76,11 @@ export function Sidebar({ setIsOpen }) {
         </NavLink>
         <NavLink
           onClick={() => setIsOpen(false)}
-          to="/github"
+          to="/gemini"
           className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
         >
-          <FiGithub className="mr-3 text-xl" />
-          GitHub
+          <SiGooglegemini className="mr-3 text-xl" />
+          Gemini
         </NavLink>
       </div>
     </div>
