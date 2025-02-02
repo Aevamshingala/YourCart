@@ -13,6 +13,9 @@ import LandingPage from "./extraFeture/landingPage.jsx";
 import { Outlet } from "react-router";
 import Gemini from "./gemini/gemini.jsx";
 import Client from "./socket_io_client/client.jsx";
+import { CropeImage } from "./cropper/cropper.jsx";
+import Fileuplod from "./cropper/file.jsx";
+
 const LayoutWithoutNavbarAndFooter = () => (
   <div>
     <div className="content">
@@ -31,6 +34,8 @@ const router = createBrowserRouter(
         <Route path="showfollower" element={<Show_follow />} />
         <Route path="gemini" element={<Gemini />} />
         <Route path="chat" element={<Client />} />
+        <Route path="image" element={<CropeImage />} />
+        <Route path="upload" element={<Fileuplod />} />
       </Route>
 
       <Route element={<LayoutWithoutNavbarAndFooter />}>

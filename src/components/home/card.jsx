@@ -7,6 +7,7 @@ import { BiSolidLike } from "react-icons/bi";
 import { persondata } from "../personData.js";
 import { BsPersonCircle } from "react-icons/bs";
 
+// hear optional value if search bar click then send another data other wise regular data
 function Card() {
   const [islike, setIsLike] = useState(false);
   const [isShow, setIsShow] = useState(null);

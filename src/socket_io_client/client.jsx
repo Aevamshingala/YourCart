@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3000");
+const socket = io?.connect("http://localhost:3000");
 
 function Client() {
   const [message, setMessage] = useState("");
@@ -55,16 +55,27 @@ function Client() {
     setIsjoin(false);
   };
 
-  const socketJoinevent = (payload) => {
-    setIsjoin(payload);
-    console.log(payload);
-  };
-  const socketpreviousMessage = (payload) => {
-    setChat(payload);
-  };
+  useEffect(() => {
+    const socketJoinevent = (payload) => {
+      setIsjoin(payload);
+      console.log(payload);
+    };
+    socket.on("joinRoom", socketJoinevent);
+    return () => {
+      socket.off("joinRoom", socketJoinevent);
+    };
+  }, [join]);
 
-  socket.on("joinRoom", socketJoinevent);
-  socket.on("previousMessage", socketpreviousMessage);
+  useEffect(() => {
+    const socketpreviousMessage = (payload) => {
+      setChat(payload);
+    };
+    console.log(chat);
+    socket.on("previousMessage", socketpreviousMessage);
+    return () => {
+      socket.off("previousMessage", socketpreviousMessage);
+    };
+  }, [isjoin]);
 
   useEffect(() => {
     const handleNewChat = (payload) => {
@@ -84,6 +95,11 @@ function Client() {
         chatContainerRef.current.scrollHeight;
     }
   }, [message, setChat, chat]);
+
+  chat.map(({ timeStamp }) => {
+    timeStamp = timeStamp.split("T")[0];
+    console.log(timeStamp);
+  });
 
   return (
     <div className="h-screen bg-transparent flex flex-col items-center justify-center p-6">
@@ -115,7 +131,7 @@ function Client() {
             <div className="flex justify-center">
               <h2 className="font-bold text-3xl text-gray-500 w-fit">{join}</h2>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-3">
               <button
                 type="button"
                 className="px-6 py-3 bg-red-500 text-white font-semibold rounded-full shadow-md hover:bg-red-600 transition-all"
@@ -132,25 +148,35 @@ function Client() {
           className="flex-1 p-4 bg-gray-50 rounded-xl shadow-inner space-y-4 overflow-y-scroll h-fit max-h-80 scrollbar-thin"
           ref={chatContainerRef}
         >
-          {chat.map(({ content, user }, index) => (
-            <div
-              key={index}
-              className={`flex ${
-                user === "aevam" ? "justify-end" : "justify-start"
-              }`}
-            >
+          {chat.map(({ content, user, timeStamp }, index) => {
+            const time = new Date(timeStamp).toLocaleTimeString("en-IN", {
+              minute: "2-digit",
+              hour: "2-digit",
+              timeZone: "Asia/Kolkata",
+              hour12: true,
+            });
+
+            return (
               <div
-                className={`max-w-xs px-4 py-3 rounded-lg shadow-md break-words ${
-                  user === "aevam"
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 text-gray-900"
+                key={index}
+                className={`flex ${
+                  user === "aevam" ? "justify-end" : "justify-start"
                 }`}
               >
-                <p className="text-base leading-relaxed">{content}</p>
-                <p className="text-xs mt-1 text-right opacity-70">{user}</p>
+                <div
+                  className={`max-w-xs px-4 py-3 rounded-lg shadow-md break-words ${
+                    user === "aevam"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-gray-900"
+                  }`}
+                >
+                  <p className="text-base leading-relaxed">{content}</p>
+                  <p className="text-xs mt-1 text-right opacity-70">{user}</p>
+                  <p className="text-xs mt-1 text-right opacity-70">{time}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Input Box */}
@@ -178,7 +204,6 @@ function Client() {
       </div>
     </div>
   );
-
 }
 
 export default Client;

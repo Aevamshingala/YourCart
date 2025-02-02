@@ -29,7 +29,14 @@
 }
 
 .scrollbar-thin {
+  scroll-behavior: smooth;
   scrollbar-width: thin;
+}
+  .scrollbar-thin-none::-webkit-scrollbar{
+    scrollbar-width: thin;
+    scrollbar-color: #4d5b73;
+    scroll-behavior: smooth;
+
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -38,9 +45,12 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+  scroll-behavior: smooth;
+
 }
 
 .scrollbar-hide {
+  scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

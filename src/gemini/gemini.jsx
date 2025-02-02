@@ -46,7 +46,7 @@ function Gemini() {
       }`}
     >
       {/* Top Input Box */}
-      <div className="bg-white text-gray-800 rounded-xl shadow-lg p-6 w-full max-w-lg mx-auto">
+      <div className="bg-white text-gray-800 rounded-xl p-6 w-full max-w-lg mx-auto  shadow-2xl ">
         <h1 className="text-3xl font-bold mb-4 text-center">
           Gemini AI Generator
         </h1>
@@ -88,9 +88,9 @@ function Gemini() {
       {message && (
         <>
           <h2 className="text-xl font-semibold mb-2 mt-4">Response:</h2>
-          <pre className="text-white p-4 font-sans rounded-lg overflow-auto">
+          <p className="text-white p-4 font-sans rounded-lg overflow-auto break-words">
             {message}
-          </pre>
+          </p>
         </>
       )}
     </div>
