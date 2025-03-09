@@ -6,13 +6,13 @@ import { useLocation } from "react-router-dom";
 export const CropeImage = () => {
   const [isimg, setIsImg] = useState();
   const [cropperSourse, setCropperSourse] = useState();
-  const [isuplode, setisuplode] = useState(false);
+  const [isUploade, setIsUpload] = useState(false);
   const [canvas, setcanvas] = useState();
   const location = useLocation();
   useEffect(() => {
-    const { cropUrl, isUplod } = location.state || {};
+    const { cropUrl, isUpload } = location.state || {};
     setCropperSourse(cropUrl);
-    setisuplode(isUplod);
+    setIsUpload(isUpload);
     console.log(cropperSourse);
   }, [location]);
 
@@ -40,7 +40,7 @@ export const CropeImage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
         <div className="bg-transparent shadow-lg rounded-xl p-6 flex flex-col items-center">
           {/* Cropper */}
-          {isuplode && (
+          {isUploade && (
             <div className="w-full h-[300px] border-2 border-gray-300 overflow-hidden mt-4">
               <Cropper
                 onChange={cropper}

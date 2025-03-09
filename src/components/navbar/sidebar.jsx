@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FiHome, FiInfo, FiPhone, FiGithub } from "react-icons/fi";
+import { FaDiscord } from "react-icons/fa6";
 import Searchbar from "./searchbar";
 import { Link } from "react-router-dom";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { SiGooglegemini } from "react-icons/si";
+import owal from "../assets/owal.png";
 
 export function Sidebar({ setIsOpen }) {
   // When sidebar is open, lock the page's scroll
@@ -29,9 +31,14 @@ export function Sidebar({ setIsOpen }) {
       <div className="flex items-center justify-between w-full px-6 py-4 bg-gray-800 shadow-md">
         <div className="flex items-center space-x-2">
           <Link to={"/profile"}>
-            <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
-              <button onClick={() => setIsOpen(false)}>🌊</button>
-            </div>
+            <button onClick={() => setIsOpen(false)}>
+              {" "}
+              <img
+                src={owal}
+                alt="Unknown"
+                className="w-12 h-12 rounded-full object-cover border border-gray-300 mr-3"
+              />
+            </button>
           </Link>
           <h1 className="text-xl font-semibold">userName</h1>
         </div>
@@ -53,7 +60,7 @@ export function Sidebar({ setIsOpen }) {
         <NavLink
           onClick={() => setIsOpen(false)}
           to="/home"
-          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
+          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 text-white transition duration-200"
         >
           <FiHome className="mr-3 text-xl" />
           Home
@@ -61,15 +68,15 @@ export function Sidebar({ setIsOpen }) {
         <NavLink
           onClick={() => setIsOpen(false)}
           to="/chat"
-          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
+          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 text-white transition duration-200"
         >
-          <IoChatboxEllipsesOutline className="mr-3 text-xl" />
+          <FaDiscord className="mr-3 text-xl" />
           Discord
         </NavLink>
         <NavLink
           onClick={() => setIsOpen(false)}
           to="/contact"
-          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
+          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 text-white transition duration-200"
         >
           <FiPhone className="mr-3 text-xl" />
           Contact
@@ -77,7 +84,7 @@ export function Sidebar({ setIsOpen }) {
         <NavLink
           onClick={() => setIsOpen(false)}
           to="/gemini"
-          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 hover:text-white transition duration-200"
+          className="flex items-center px-4 py-2 text-lg rounded-lg hover:bg-blue-500 text-white transition duration-200"
         >
           <SiGooglegemini className="mr-3 text-xl" />
           Gemini

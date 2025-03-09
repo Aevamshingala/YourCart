@@ -9,6 +9,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../assets/logo.jpeg";
 import Searchbar from "./searchbar";
 import { Sidebar } from "./sidebar";
+import owal from "../assets/owal.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,9 +72,11 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center space-x-4">
           <Searchbar />
           <Link to={"/profile"}>
-            <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full">
-              🌊
-            </div>
+            <img
+              src={owal}
+              alt="Unknown"
+              className="w-12 h-12 rounded-full object-cover border border-gray-300 mr-3"
+            />
           </Link>
         </div>
 

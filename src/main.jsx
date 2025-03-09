@@ -14,6 +14,7 @@ import { Outlet } from "react-router";
 import Gemini from "./gemini/gemini.jsx";
 import Client from "./socket_io_client/client.jsx";
 import { CropeImage } from "./cropper/cropper.jsx";
+import OneMessage from "./socket_io_client/oneToOne.jsx";
 import Fileuplod from "./cropper/file.jsx";
 
 const LayoutWithoutNavbarAndFooter = () => (
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
         <Route path="gemini" element={<Gemini />} />
         <Route path="chat" element={<Client />} />
         <Route path="image" element={<CropeImage />} />
+        <Route path="personalmessage" element={<OneMessage />} />
         <Route path="upload" element={<Fileuplod />} />
       </Route>
 

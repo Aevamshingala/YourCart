@@ -3,7 +3,6 @@ import Card from "./card";
 import ScrollCard from "./scrollCard";
 import Category from "./category";
 
-
 function Home() {
   return (
     <>
@@ -13,9 +12,9 @@ function Home() {
       <div className="flex justify-center items-center min-h-screen bg-transparent">
         <Card />
       </div>
-      <div className="flex justify-center items-center min-h-screen bg-transparent">
+      {/* <div className="flex justify-center items-center min-h-screen bg-transparent">
         <ScrollCard />
-      </div>
+      </div> */}
     </>
   );
 }

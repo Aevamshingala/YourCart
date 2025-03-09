@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+.profileBack{
+  background: url('./components/assets/photo_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 .back {
   /* background: linear-gradient(to bottom, #071019, #04121a, #001d20, #0c3132); */
   /* #004b43,
@@ -46,7 +54,6 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
   scroll-behavior: smooth;
-
 }
 
 .scrollbar-hide {
@@ -56,10 +63,15 @@
 }
 
 .bg-profile{
+background: linear-gradient(to bottom, #6a11cb, #2575fc, #00c6ff, #6effb8);
+-webkit-background-clip: text; /* Clip gradient to text */
+-webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
+display: inline-block; /* Ensures proper gradient rendering */
 
-  background: linear-gradient(to bottom, #0053a5, #2eb7ba, #1fa269, #25a465);
-  -webkit-background-clip: text; /* Clip gradient to text */
-  -webkit-text-fill-color: transparent; /* Make text transparent to show gradient */
-  display: inline-block; /* Ensures proper gradient rendering */
+}
 
+.abril-fatface-regular {
+  font-family: "Abril Fatface", serif;
+  font-weight: 400;
+  font-style: normal;
 }

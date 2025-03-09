@@ -15,10 +15,9 @@ function Fileuplod() {
       setError("invalid file type");
     } else {
       const url = URL.createObjectURL(myimgfile);
-      0;
       setCropUrl(url);
       // navigate("/image");
-      navigate("/image", { state: { cropUrl: url, isUplod: true } });
+      navigate("/image", { state: { cropUrl: url, isUpload: true } });
     }
   };
 
@@ -33,6 +32,7 @@ function Fileuplod() {
                 file:bg-sky-50 file:text-sky-700
                 hover:file:bg-sky-100 mt-1 px-3 py-2 cursor-pointer`}
         onChange={mydata}
+        accept="image/*"
       />
       {error && <p>{error}</p>}
     </>

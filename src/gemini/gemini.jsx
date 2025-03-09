@@ -28,6 +28,8 @@ function Gemini() {
         response.data.candidates[0]?.content?.parts[0]?.text || "No response"
       );
     } catch (error) {
+      setLoading(false);
+      setQuestion("");
       setMessage("Error generating response. Please try again.");
     }
   }
@@ -47,9 +49,7 @@ function Gemini() {
     >
       {/* Top Input Box */}
       <div className="bg-white text-gray-800 rounded-xl p-6 w-full max-w-lg mx-auto  shadow-2xl ">
-        <h1 className="text-3xl font-bold mb-4 text-center">
-          Gemini AI Generator
-        </h1>
+        <h1 className="text-3xl font-bold mb-4 text-center">Gemini AI</h1>
         <div className="space-y-4">
           <input
             type="text"
@@ -60,12 +60,14 @@ function Gemini() {
             placeholder="Enter your question..."
             className="w-full px-4 py-3 text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
-          <button
-            onClick={generateGemini}
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
-          >
-            Generate Response
-          </button>
+          {question && (
+            <button
+              onClick={generateGemini}
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
+            >
+              Generate Response
+            </button>
+          )}
           {message && (
             <div
               className="p-4 bg-slate-200 rounded-lg cursor-pointer"
@@ -78,7 +80,7 @@ function Gemini() {
           {loading && (
             <>
               <div className="loading flex justify-center items-center">
-                <div className="h-12 w-12 border-4 border-blue-500 border-dashed rounded-sm animate-spin"></div>
+                <div className="h-12 w-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
               </div>
             </>
           )}
@@ -88,9 +90,9 @@ function Gemini() {
       {message && (
         <>
           <h2 className="text-xl font-semibold mb-2 mt-4">Response:</h2>
-          <p className="text-white p-4 font-sans rounded-lg overflow-auto break-words">
+          <pre className="text-white p-4 font-sans rounded-lg overflow-auto break-words">
             {message}
-          </p>
+          </pre>
         </>
       )}
     </div>

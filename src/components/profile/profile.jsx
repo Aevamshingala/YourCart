@@ -1,18 +1,23 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "../home/buttonComponent";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { nanoid } from "nanoid";
-import Women from "../assets/women.png";
-import men from "../assets/men.png";
+import eye from "../assets/eye.jpeg";
+import { ImCamera } from "react-icons/im";
+import { FaCheck, FaTimes } from "react-icons/fa";
+import NatureProfileCard from "./show_Profile.jsx";
+import owal from "../assets/owal.png";
 
 const Profile = () => {
+  const inputRefrence = useRef(null);
   const Password = () => {};
   const changeName = () => {};
   const picChange = () => {
-    console.log("hello");
+    inputRefrence.current.click();
   };
+  const edit_Pic = () => {};
   const setting = [
     {
       name: "Password",
@@ -23,12 +28,31 @@ const Profile = () => {
       method: changeName,
     },
     {
-      name: "profile pic ",
-      method: picChange,
+      name: "Edit pic",
+      method: edit_Pic,
     },
   ];
-  const data = "men"; // hear change give actual data
   const [isOpen, setIsOpen] = useState(false);
+  const [img, setImg] = useState("");
+  const [error, setError] = useState("");
+  const handeleNewImage = (event) => {
+    // console.log(event.target.files);
+    const myimgfile = event.target.files[0];
+    const typeOfFile = event.target.files[0].name.split(".")[1];
+    const typeList = ["png", "jpeg", "jpg"];
+    if (!typeList.some((List) => List == typeOfFile)) {
+      // console.log(typeOfFile);
+      setError("invalid file type");
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(myimgfile);
+      reader.onload = (event) => {
+        setImg(event.target.result);
+      };
+    }
+  };
+
+  const save = () => {};
 
   return (
     <motion.div
@@ -42,20 +66,60 @@ const Profile = () => {
     >
       {/* Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-40 flex items-center justify-center p-4">
+        <div className="fixed inset-0  bg-opacity-50 z-40 flex items-center justify-center p-4 h-fit mt-52">
           <div className=" border-white border-2 text-white rounded-lg shadow-lg p-4 w-full max-w-md h-auto overflow-y-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white text-3xl focus:outline-none float-right h-5 w-fit"
+              className="text-white text-3xl relative focus:outline-none float-right h-5 w-fit "
             >
               <FiX />
             </button>
-            <ul className="grid col-span-1 mt-8">
+            <div className="flex justify-center items-center relative">
+              <div className="relative">
+                <img
+                  src={img || eye}
+                  alt="Profile"
+                  className="rounded-full w-52 h-52 object-cover ml-10"
+                />
+                <button onClick={picChange}>
+                  <div className="absolute bottom-0 right-0 left-28 w-14 h-14 p-3 text-white bg-blue-800  rounded-full items-center flex justify-center">
+                    <ImCamera className="w-16 h-16" />
+                    <input
+                      type="file"
+                      className="hidden"
+                      ref={inputRefrence}
+                      onChange={handeleNewImage}
+                      onClick={() => setError("")}
+                      accept="image/*"
+                    />
+                  </div>
+                </button>
+              </div>
+            </div>
+            {img && (
+              <>
+                <div className="flex mt-4 justify-center items-center">
+                  <button
+                    className="p-3 text-white bg-green-600 rounded-lg hover:bg-green-800 transition-colors duration-300 shadow-md mx-2 flex items-center"
+                    onClick={save}
+                  >
+                    <FaCheck className="mr-2" /> Save
+                  </button>
+                  <button
+                    className="p-3 text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors duration-300 shadow-md mx-2 flex items-center"
+                    onClick={() => setImg("")}
+                  >
+                    <FaTimes className="mr-2" /> Cancel
+                  </button>
+                </div>
+              </>
+            )}
+            <ul className="grid col-span-1 mt-2">
               {setting.length > 0 ? (
                 setting.map(({ name, method }) => (
                   <li
                     key={nanoid()}
-                    className="h-12 bg-gray-400 rounded-md m-2 font-bold text-2xl flex items-center justify-center mt-5 hover:cursor-pointer"
+                    className="h-12 bg-blue-400 rounded-md m-2 font-bold text-3xl flex items-center justify-center mt-5 hover:cursor-pointer abril-fatface-regular"
                     onClick={method}
                   >
                     {name}
@@ -65,11 +129,11 @@ const Profile = () => {
                 <li>No results found</li>
               )}
             </ul>
-            <div className="flex items-center justify-center mt-4 overflow-hidden">
-              {data === "men" ? (
-                <img src={men} className="h-52 rounded-lg" />
-              ) : (
-                <img src={Women} className="h-80 rounded-lg" />
+            <div>
+              {error && (
+                <div>
+                  <h1 className="font-medium text-2xl text-red-400">{error}</h1>
+                </div>
               )}
             </div>
           </div>
@@ -90,11 +154,11 @@ const Profile = () => {
         </div>
 
         {/* Content */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 p-4 ">
           {/* Left Side - Image */}
           <div className="flex items-center justify-center p-5">
             <img
-              src="https://imgs.search.brave.com/FYmsuChFcB46GmHEP9uO7qHz1b2vSK1YhJWr8s8m7sM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzE4LzA0LzYz/LzM2MF9GXzcxODA0/NjM2NF9rWGtTWGJG/dVZHeHNBNXVxZFlj/S0Q5SllIMlVrTjVi/Ui5qcGc"
+              src={eye}
               alt="Profile"
               className="object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg"
             />
@@ -129,13 +193,23 @@ const Profile = () => {
         </div>
 
         {/* Menu Button */}
-        <div className="h-fit w-fit mt-10 mr-5">
+        <div className="h-fit w-fit mt-10 m-5">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-2xl focus:outline-none text-black"
+            className="text-3xl focus:outline-none text-black"
           >
             {!isOpen && <FiMenu />}
           </button>
+        </div>
+      </div>
+
+      <div
+        className={`mt-10  w-full overflow-x-auto overflow-y-hidden  px-4 py-6 scroll-smooth snap-x snap-mandatory scrollbar-thin ${
+          isOpen ? "opacity-20 pointer-events-none z-10" : ""
+        }`}
+      >
+        <div className="flex space-x-4 w-[900px] sm:w-[1200px] bg-y md:w-[1500px] lg:w-[1800px]">
+          <NatureProfileCard />
         </div>
       </div>
     </motion.div>
@@ -143,3 +217,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
