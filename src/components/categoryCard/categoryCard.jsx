@@ -3,7 +3,7 @@ import cardData from "../temoData";
 import { nanoid } from "nanoid";
 import { Button } from "../home/buttonComponent";
 import Category from "../home/category";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiSolidLike } from "react-icons/bi";
 import LikeShow from "../likeShow.jsx";
 import { BsPersonCircle } from "react-icons/bs";
@@ -13,6 +13,7 @@ function CategoryCard() {
   const [isShow, setIsShow] = useState(null);
   const [followedCreators, setFollowedCreators] = useState({});
   const [likedCards, setLikedCards] = useState({});
+  const navigate = useNavigate();
 
   const handleClick = (i) => {
     setIsShow(isShow === i ? null : i);
@@ -25,7 +26,9 @@ function CategoryCard() {
   const handleFollow = (creatorId) => {
     setFollowedCreators((prev) => ({ ...prev, [creatorId]: !prev[creatorId] }));
   };
-
+  const handleProfile = (userName) => {
+    navigate(`/findprofile/${userName}`);
+  };
   return (
     <div className="w-full p-4 grid grid-cols-1 gap-6">
       <Category />
@@ -47,9 +50,10 @@ function CategoryCard() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
                   <img
-                    src={creator?.image || owal}
-                    alt={creator?.name || "Unknown"}
-                    className="w-10 h-10 rounded-full object-cover border border-gray-300 mr-2"
+                    src={creator?.avatar || owal}
+                    alt={creator?.userName || "Unknown"}
+                    className="w-10 h-10 rounded-full object-cover border border-gray-300 mr-2 cursor-pointer"
+                    onClick={() => handleProfile(creator?.userName)}
                   />
                   <p className="text-sm md:text-lg font-semibold text-gray-700">
                     {creator?.name || "Unknown"}

@@ -34,7 +34,9 @@ const allowedColors = [
 
 function NatureProfileCard() {
   const navigate = useNavigate();
-
+  const handleProfile = (userName) => {
+    navigate(`/findprofile/${userName}`);
+  };
   const connectToUser = (id) => {
     socket.emit("joinMeToUser", id);
     navigate("/personalmessage", { state: { userId: id } });
@@ -67,7 +69,8 @@ function NatureProfileCard() {
               <img
                 src={image || eye}
                 alt="Profile"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-pointer"
+                onClick={() => handleProfile(name)}
               />
             </div>
 

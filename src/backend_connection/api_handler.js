@@ -3,7 +3,10 @@ import axios from "axios";
 export async function apiData({ url, data = {} }) {
   try {
     let response = {};
-    const api = axios.create({ baseURL: "http://localhost:3000/api/v1/user" });
+    const api = axios.create({
+      baseURL: "http://localhost:3000/api/v1/user",
+      withCredentials: true,
+    });
     await api
       .post(`${url}`, data)
       .then(

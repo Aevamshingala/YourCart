@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { nanoid } from "nanoid";
-import cardData from "../temoData.js";
 import { Button } from "./buttonComponent.jsx";
 import { BiSolidLike } from "react-icons/bi";
 import owal from "../assets/owal.png";
 import LikeShow from "../likeShow.jsx";
 
-function Card() {
+function Card({ cardData }) {
   const [likedCards, setLikedCards] = useState({});
   const [isliked, setIsLiked] = useState(false);
   const [followedCreators, setFollowedCreators] = useState({});
-
+  const navigate = useNavigate();
   const handleLike = (i) => {
     setLikedCards((prev) => ({ ...prev, [i]: !prev[i] }));
   };
 
   const handleFollow = (creatorId) => {
     setFollowedCreators((prev) => ({ ...prev, [creatorId]: !prev[creatorId] }));
+  };
+
+  const handleProfile = (userName) => {
+    navigate(`/findprofile/${userName}`);
   };
 
   return (
@@ -41,12 +44,13 @@ function Card() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
                   <img
-                    src={creator?.image || owal}
-                    alt={creator?.name || "Unknown"}
-                    className="w-12 h-12 rounded-full object-cover border border-gray-300 mr-3"
+                    src={creator?.avatar || owal}
+                    alt={creator?.userName || "Unknown"}
+                    className="w-12 h-12 rounded-full object-cover border border-gray-300 mr-3 cursor-pointer"
+                    onClick={() => handleProfile(creator?.userName)}
                   />
                   <p className="text-lg font-semibold text-gray-700">
-                    {creator?.name || "Unknown"}
+                    {creator?.userName || "Unknown"}
                   </p>
                 </div>
                 <button
@@ -84,7 +88,6 @@ function Card() {
                 />
               </div>
 
-              {isliked && <LikeShow />}
               <LikeShow />
             </div>
           </div>

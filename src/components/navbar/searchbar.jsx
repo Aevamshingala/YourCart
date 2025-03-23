@@ -9,10 +9,10 @@ export default function Searchbar() {
   const [searchval, setsearchval] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
-  const handlesearch = () => {
-    // handle search bar
-    // id will come and it send to another page
-    // data send to home page
+  const handlesearch = (title) => {
+    console.log(title);
+
+    navigate(`/searchpost/${title}`);
   };
   useEffect(() => {
     const filtered = cardData.filter(({ title }) =>
@@ -26,7 +26,7 @@ export default function Searchbar() {
       <div className="relative w-full max-w-lg">
         <FiSearch className="absolute top-3 left-2 text-gray-400" />
         <input
-          type="text"
+          type="search"
           placeholder="What are you looking for?"
           className="bg-gray-700 text-white pl-8 pr-6 py-2 rounded-lg w-full 
           border focus:border-gray-400 focus:bg-gray-600"
@@ -41,7 +41,7 @@ export default function Searchbar() {
                   <li
                     key={nanoid()}
                     className="h-5 bg-gray-400 rounded-md m-2 flex items-center justify-center"
-                    onClick={handlesearch}
+                    onClick={() => handlesearch(title)}
                   >
                     {title}
                   </li>

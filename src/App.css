@@ -1,42 +1,107 @@
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutSlide {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+.frame {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  max-width: 350px;
+  width: 100%;
+  min-height: 100px;
+  border-radius: 15px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSlide 0.8s ease-out forwards;
+  position: fixed;
+  top: 8%;
+  right: 5%;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
+}
+
+.hide {
+  animation: fadeOutSlide 0.5s ease-out forwards;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.exitbutton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none; /* Remove focus outline */
+}
+
+.exitbutton:focus {
+  outline: none; /* Ensure no outline on focus */
+}
+
+.cancel {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.cancel::before,
+.cancel::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cancel::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.message {
+  margin: 15px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

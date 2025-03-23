@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./card";
 import ScrollCard from "./scrollCard";
-import Category from "./category";
+import Category from "./category.jsx";
+import cardData from "../temoData.js";
 
 function Home() {
   return (
@@ -10,7 +11,7 @@ function Home() {
         <Category />
       </div>
       <div className="flex justify-center items-center min-h-screen bg-transparent">
-        <Card />
+        <Card cardData={cardData} />
       </div>
       {/* <div className="flex justify-center items-center min-h-screen bg-transparent">
         <ScrollCard />
